@@ -10,6 +10,7 @@ import { CombosModule } from './combos/combos.module';
       type: 'postgres',
       host: 'containers-us-west-106.railway.app',
       port: 6943,
+      database: 'railway',
       username: 'postgres',
       password: 'IvNBTbp0QDAr3CAvoaVK',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
