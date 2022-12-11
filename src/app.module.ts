@@ -3,19 +3,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CombosModule } from './combos/combos.module';
+import { ServiciosModule } from './servicios/servicios.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'containers-us-west-106.railway.app',
-      port: 6943,
+      host: 'containers-us-west-162.railway.app',
+      port: 6063,
       username: 'postgres',
-      password: 'IvNBTbp0QDAr3CAvoaVK',
+      password: 'yJEVeCWdQ4Wv2liSjPOm',
+      database: 'railway',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     CombosModule,
+    ServiciosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
