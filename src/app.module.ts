@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CombosModule } from './combos/combos.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { AreaRestauranteModule } from './area_restaurante/area_restaurante.module';
+import { TipoMesaModule } from './tipo_mesa/tipo_mesa.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { ClienteModule } from './cliente/cliente.module';
     }),
     CombosModule,
     ClienteModule,
+    AreaRestauranteModule,
+    TipoMesaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
