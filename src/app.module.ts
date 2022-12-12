@@ -4,21 +4,25 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CombosModule } from './combos/combos.module';
 import { ServiciosModule } from './servicios/servicios.module';
+import { UnidadesModule } from './unidades/unidades.module';
+import { TipoPagosModule } from './tipo_pagos/tipo_pagos.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'containers-us-west-162.railway.app',
-      port: 6063,
+      host: 'localhost',
+      port: 5432,
       username: 'postgres',
-      password: 'yJEVeCWdQ4Wv2liSjPOm',
-      database: 'railway',
+      password: 'Reprobados13',
+      database: 'restaurant',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     CombosModule,
     ServiciosModule,
+    UnidadesModule,
+    TipoPagosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
