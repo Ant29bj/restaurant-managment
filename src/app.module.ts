@@ -6,6 +6,7 @@ import { CombosModule } from './combos/combos.module';
 import { ServiciosModule } from './servicios/servicios.module';
 import { UnidadesModule } from './unidades/unidades.module';
 import { TipoPagosModule } from './tipo_pagos/tipo_pagos.module';
+import { CategoriaMermaModule } from './categoria_merma/categoria_merma.module';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { TipoPagosModule } from './tipo_pagos/tipo_pagos.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'Reprobados13',
+      password: 'saulp123',
       database: 'restaurant',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
@@ -23,6 +24,7 @@ import { TipoPagosModule } from './tipo_pagos/tipo_pagos.module';
     ServiciosModule,
     UnidadesModule,
     TipoPagosModule,
+    CategoriaMermaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

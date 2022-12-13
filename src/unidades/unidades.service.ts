@@ -8,8 +8,8 @@ import { Unidades } from './unidades.entity';
 export class UnidadesService extends GenericService<Unidades> {
   constructor(
     @InjectRepository(Unidades)
-    private readonly empresaRepository: Repository<Unidades>,
+    private readonly unidadesRepository: Repository<Unidades>,
   ) {
-    super(empresaRepository);
+    super(unidadesRepository);
   }
 }
