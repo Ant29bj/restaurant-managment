@@ -7,6 +7,8 @@ import { ServiciosModule } from './servicios/servicios.module';
 import { UnidadesModule } from './unidades/unidades.module';
 import { TipoPagosModule } from './tipo_pagos/tipo_pagos.module';
 import { CategoriaMermaModule } from './categoria_merma/categoria_merma.module';
+import { InsumosModule } from './insumos/insumos.module';
+import { EquivalenciasMedidasModule } from './equivalencias_medidas/equivalencias_medidas.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { CategoriaMermaModule } from './categoria_merma/categoria_merma.module';
     UnidadesModule,
     TipoPagosModule,
     CategoriaMermaModule,
+    InsumosModule,
+    EquivalenciasMedidasModule,
   ],
   controllers: [AppController],
   providers: [AppService],
