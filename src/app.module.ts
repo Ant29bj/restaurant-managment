@@ -17,7 +17,7 @@ import { EquivalenciasMedidasModule } from './equivalencias_medidas/equivalencia
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'saulp123',
+      password: 'Reprobados13',
       database: 'restaurant',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
