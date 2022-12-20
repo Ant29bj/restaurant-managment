@@ -8,5 +8,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [TypeOrmModule.forFeature([EquivalenciasMedidas])],
   providers: [EquivalenciasMedidasService],
   controllers: [EquivalenciasMedidasController],
+  exports: [EquivalenciasMedidasService],
 })
 export class EquivalenciasMedidasModule {}

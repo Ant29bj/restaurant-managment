@@ -12,6 +12,7 @@ import { GenericController } from 'src/generics/generic.controller';
 import { UnidadesCreateDto } from './dto/unidades.dto';
 import { Unidades } from './unidades.entity';
 import { UnidadesService } from './unidades.service';
+import { Get } from '@nestjs/common';
 
 @Controller('unidades')
 @ApiTags('unidades')
@@ -23,11 +24,16 @@ export class UnidadesController extends GenericController<
     super(unidadesService);
   }
 
+  @Get()
+  getUnidades() {
+    return this.unidadesService.getUnidades();
+  }
+
   @Post()
   @ApiBearerAuth()
   @ApiBody({ type: UnidadesCreateDto, required: true })
-  async create(@Body() entity: Unidades) {
-    return this.unidadesService.create(entity);
+  async createUnidad(@Body() entity: Unidades) {
+    return this.unidadesService.createUnidad(entity);
   }
 
   @Patch(':id')
