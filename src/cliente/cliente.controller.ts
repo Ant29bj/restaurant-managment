@@ -35,8 +35,11 @@ export class ClienteController extends GenericController<
         deleted: null,
       },
     });
-    if (registerdCliente) {
-      return 'User Already Registred';
+    const phone = await this.ClienteService.findOne({
+      where: { telefono: entity.telefono },
+    });
+    if (registerdCliente || phone) {
+      return new HttpException('Usuario ya existente', HttpStatus.CONFLICT);
     }
     return this.ClienteService.create(entity);
   }

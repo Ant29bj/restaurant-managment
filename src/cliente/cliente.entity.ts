@@ -6,7 +6,7 @@ export class Cliente extends GenericEntity {
   @Column()
   nombre: string;
 
-  @Column({ length: 10 })
+  @Column({ length: 10, unique: true })
   telefono: string;
 
   @Column()

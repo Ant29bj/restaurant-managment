@@ -6,16 +6,17 @@ import { CombosModule } from './combos/combos.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { AreaRestauranteModule } from './area_restaurante/area_restaurante.module';
 import { TipoMesaModule } from './tipo_mesa/tipo_mesa.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'containers-us-west-106.railway.app',
-      port: 6943,
+      host: 'containers-us-west-161.railway.app',
+      port: 6726,
       database: 'railway',
       username: 'postgres',
-      password: 'IvNBTbp0QDAr3CAvoaVK',
+      password: '4lSE8VPWtBuxQD9l9ppQ',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
@@ -23,6 +24,7 @@ import { TipoMesaModule } from './tipo_mesa/tipo_mesa.module';
     ClienteModule,
     AreaRestauranteModule,
     TipoMesaModule,
+    ImagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

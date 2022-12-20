@@ -5,7 +5,7 @@ export class CreateComboDto {
 
   precio: number;
 
-  imagen: string[];
+  imagen: string;
 
   status: string;
 }

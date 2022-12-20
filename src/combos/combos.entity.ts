@@ -1,5 +1,6 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity } from 'typeorm';
+import { Image } from 'src/images/images.entity';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity({ name: 'combos' })
 export class Combos extends GenericEntity {
@@ -9,8 +10,8 @@ export class Combos extends GenericEntity {
   @Column({ type: 'money' })
   precio: number;
 
-  @Column()
-  imagen: string;
+  @OneToMany(() => Image, (images) => images.comboId)
+  imagen: Image[];
 
   @Column()
   status: string;

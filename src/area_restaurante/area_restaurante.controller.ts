@@ -26,7 +26,13 @@ export class AreaRestauranteController extends GenericController<
   @Post()
   @ApiBearerAuth()
   @ApiBody({ type: CreateAreaDto, required: true })
-  createArea(@Body() newArea: CreateAreaDto) {
+  async createArea(@Body() newArea: CreateAreaDto) {
+    const area = await this.areaRestauranteService.findOne({
+      where: { descripcion: newArea.descripcion },
+    });
+    if (area) {
+      return new HttpException('Area ya existente', HttpStatus.CONFLICT);
+    }
     return this.areaRestauranteService.create(newArea);
   }
   @Patch(':id')
