@@ -3,3 +3,4 @@ export class EquivalenciasMedidasCreateDto {
   descripcion: string;
   conv_equiva: number;
 }
+
