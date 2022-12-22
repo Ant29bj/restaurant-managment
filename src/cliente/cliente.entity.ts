@@ -1,17 +1,17 @@
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Column, Entity } from 'typeorm';
 
-@Entity({ name: 'cliente' })
+@Entity({ name: 'clientes' })
 export class Cliente extends GenericEntity {
-  @Column()
+  @Column({ length: 100 })
   nombre: string;
 
-  @Column({ length: 10, unique: true })
+  @Column({ length: 13, unique: true })
   telefono: string;
 
-  @Column()
+  @Column({ length: 255 })
   email: string;
 
-  @Column()
+  @Column({ length: 255 })
   direccion: string;
 }
