@@ -18,6 +18,17 @@ import { ProductoModule } from './producto/producto.module';
 import { EmpresasModule } from './empresas/empresas.module';
 import { ProveedoresModule } from './proveedores/proveedores.module';
 import { ComandaComboModule } from './comanda_combo/comanda_combo.module';
+import { GrupoProductoModule } from './grupo_producto/grupo_producto.module';
+import { GuarnicionModule } from './guarnicion/guarnicion.module';
+import { LocalidadesModule } from './localidades/localidades.module';
+import { MermasModule } from './mermas/mermas.module';
+import { MesaModule } from './mesa/mesa.module';
+import { MunicipioModule } from './municipio/municipio.module';
+import { RecetasModule } from './recetas/recetas.module';
+import { ReportesModule } from './reportes/reportes.module';
+import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
+import { TipoMermasModule } from './tipo_mermas/tipo_mermas.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 @Module({
@@ -50,6 +61,17 @@ import { ComandaComboModule } from './comanda_combo/comanda_combo.module';
     EmpresasModule,
     ProveedoresModule,
     ComandaComboModule,
+    GrupoProductoModule,
+    GuarnicionModule,
+    LocalidadesModule,
+    MermasModule,
+    MesaModule,
+    MunicipioModule,
+    RecetasModule,
+    ReportesModule,
+    TipoUsuarioModule,
+    TipoMermasModule,
+    UsuariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
