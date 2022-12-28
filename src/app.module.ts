@@ -30,7 +30,6 @@ import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
 import { TipoMermasModule } from './tipo_mermas/tipo_mermas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
