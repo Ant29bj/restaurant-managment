@@ -12,16 +12,6 @@ import { EquivalenciasMedidasModule } from './equivalencias_medidas/equivalencia
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'Reprobados13',
-      database: 'restaurant',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
     CombosModule,
     ServiciosModule,
     UnidadesModule,
