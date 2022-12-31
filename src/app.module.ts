@@ -14,16 +14,18 @@ import { AreaRestauranteModule } from './area_restaurante/area_restaurante.modul
 import { TipoMesaModule } from './tipo_mesa/tipo_mesa.module';
 import { ImagesModule } from './images/images.module';
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
 
-      host: 'containers-us-west-161.railway.app',
-      port: 6726,
-      database: 'railway',
-      username: 'postgres',
-      password: '4lSE8VPWtBuxQD9l9ppQ',
+      host: 'localhost',
+      port: 5432,
+      database: 'root',
+      username: 'root',
+      password: 'root',
+
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
@@ -38,6 +40,23 @@ import { ImagesModule } from './images/images.module';
     AreaRestauranteModule,
     TipoMesaModule,
     ImagesModule,
+    ComboDetalleModule,
+    ProductoModule,
+    EmpresasModule,
+    ProveedoresModule,
+    ComandaComboModule,
+    GrupoProductoModule,
+    GuarnicionModule,
+    LocalidadesModule,
+    MermasModule,
+    MesaModule,
+    MunicipioModule,
+    RecetasModule,
+    ReportesModule,
+    TipoUsuarioModule,
+    TipoMermasModule,
+    UsuariosModule,
+    AgrupacionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
