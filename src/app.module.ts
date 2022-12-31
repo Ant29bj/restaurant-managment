@@ -40,6 +40,7 @@ import { FuncionalidadesModule } from './funcionalidades/funcionalidades.module'
 import { ReservacionesModule } from './reservaciones/reservaciones.module';
 import { RolDeFuncionalidadesModule } from './rol_de_funcionalidades/rol_de_funcionalidades.module';
 import { SucursalesModule } from './sucursales/sucursales.module';
+import { CategoriaProductosModule } from './categoria_productos/categoria_productos.module';
 
 @Module({
   imports: [
@@ -93,6 +94,7 @@ import { SucursalesModule } from './sucursales/sucursales.module';
     ReservacionesModule,
     RolDeFuncionalidadesModule,
     SucursalesModule,
+    CategoriaProductosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
