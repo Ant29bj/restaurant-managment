@@ -29,7 +29,7 @@ import { ReportesModule } from './reportes/reportes.module';
 import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
 import { TipoMermasModule } from './tipo_mermas/tipo_mermas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
-import { AgrupacionModule } from './agrupacion/agrupacion.module';
+
 
 @Module({
   imports: [
@@ -41,8 +41,8 @@ import { AgrupacionModule } from './agrupacion/agrupacion.module';
       database: 'root',
       username: 'root',
       password: 'root',
-
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
+
       synchronize: true,
     }),
     CombosModule,
@@ -72,7 +72,7 @@ import { AgrupacionModule } from './agrupacion/agrupacion.module';
     TipoUsuarioModule,
     TipoMermasModule,
     UsuariosModule,
-    AgrupacionModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],
