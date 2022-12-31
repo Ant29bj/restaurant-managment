@@ -29,18 +29,7 @@ import { ReportesModule } from './reportes/reportes.module';
 import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
 import { TipoMermasModule } from './tipo_mermas/tipo_mermas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
-import { ComandaModule } from './comanda/comanda.module';
-import { ComandaProductosModule } from './comanda_productos/comanda_productos.module';
-import { ComandaServiciosModule } from './comanda_servicios/comanda_servicios.module';
-import { ComedorModule } from './comedor/comedor.module';
-import { DetalleRecetaModule } from './detalle_receta/detalle_receta.module';
-import { DiasHabilesModule } from './dias_habiles/dias_habiles.module';
-import { EstadosModule } from './estados/estados.module';
-import { FuncionalidadesModule } from './funcionalidades/funcionalidades.module';
-import { ReservacionesModule } from './reservaciones/reservaciones.module';
-import { RolDeFuncionalidadesModule } from './rol_de_funcionalidades/rol_de_funcionalidades.module';
-import { SucursalesModule } from './sucursales/sucursales.module';
-import { CategoriaProductosModule } from './categoria_productos/categoria_productos.module';
+
 
 @Module({
   imports: [
@@ -83,18 +72,7 @@ import { CategoriaProductosModule } from './categoria_productos/categoria_produc
     TipoUsuarioModule,
     TipoMermasModule,
     UsuariosModule,
-     ComandaModule,
-    ComandaProductosModule,
-    ComandaServiciosModule,
-    ComedorModule,
-    DetalleRecetaModule,
-    DiasHabilesModule,
-    EstadosModule,
-    FuncionalidadesModule,
-    ReservacionesModule,
-    RolDeFuncionalidadesModule,
-    SucursalesModule,
-    CategoriaProductosModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],
