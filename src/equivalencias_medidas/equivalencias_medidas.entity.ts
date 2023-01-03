@@ -1,13 +1,6 @@
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Unidades } from 'src/unidades/unidades.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
-  PrimaryColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity({ name: 'equivalencias_medidas' })
 export class EquivalenciasMedidas extends GenericEntity {

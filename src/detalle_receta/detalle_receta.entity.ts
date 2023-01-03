@@ -1,15 +1,27 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity } from 'typeorm';
+import { Insumos } from 'src/insumos/insumos.entity';
+import { Productos } from 'src/producto/producto.entity';
+import { Recetas } from 'src/recetas/recetas.entity';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity({ name: 'detalle_receta' })
 export class DetalleReceta extends GenericEntity {
-  @Column({ type: 'smallint' })
+  @ManyToOne((type) => Recetas, (recetas) => recetas.id, {})
+  @JoinColumn({ name: 'id_recetas', referencedColumnName: 'id' })
+  recetas: Recetas;
+  @Column()
   id_receta: number;
 
-  @Column({ type: 'smallint' })
+  @ManyToOne((type) => Insumos, (insumos) => insumos.id, {})
+  @JoinColumn({ name: 'id_insumos', referencedColumnName: 'id' })
+  insumos: Insumos;
+  @Column()
   id_insumos: number;
 
-  @Column({ type: 'bigint' })
+  @ManyToOne((type) => Productos, (productos) => productos.id, {})
+  @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
+  producto: Productos;
+  @Column()
   id_producto: number;
 
   @Column({ type: 'smallint' })

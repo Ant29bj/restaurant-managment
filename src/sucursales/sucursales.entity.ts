@@ -1,47 +1,56 @@
+import { Estados } from 'src/estados/estados.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Localidades } from 'src/localidades/localidades.entity';
+import { Municipios } from 'src/municipio/municipios.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'sucursales' })
 export class Sucursales extends GenericEntity {
-  @Column({ type: 'bigint' })
+  @ManyToOne((type) => Estados, (estados) => estados.id, {})
+  @JoinColumn({ name: 'ID_Estado', referencedColumnName: 'id' })
+  @Column()
+  ID_Estado: number;
+  estados: Estados;
+  // Fk compuestas entendidas
+  @ManyToOne(() => Municipios, {})
+  @JoinColumn([
+    { name: 'ID_Estado', referencedColumnName: 'estado_id' },
+    { name: 'ID_Municipio', referencedColumnName: 'clave' },
+  ])
+  municipios: Municipios;
+  @Column()
+  ID_Municipio: number;
+
+  @ManyToOne(() => Localidades, { eager: true })
+  @JoinColumn([
+    { name: 'ID_Estado', referencedColumnName: 'cve_ent' },
+    { name: 'ID_Municipio', referencedColumnName: 'cve_mun' },
+    { name: 'ID_Localidad', referencedColumnName: 'cve_loc' },
+  ])
+  localidades: Localidades;
+  @Column()
+  ID_Localidad: number;
+
+  @PrimaryColumn()
   id_empresa: number;
 
-  @Column({ type: 'bigint' })
-  id_sucursal: number;
-
-  @Column({ length: 100 })
+  @Column()
   nombre_sucursal: string;
-
-  @Column({ type: 'smallint' })
-  id_estado: number;
-
-  @Column({ type: 'smallint' })
-  id_municipio: number;
-
-  @Column({ type: 'smallint' })
-  id_localidad: number;
-
-  @Column({ length: 100 })
+  @Column()
+  tipos_pagos: number;
+  @Column()
   direccion: string;
-
-  @Column({ type: 'smallint' })
-  codigo_postal: number;
-
-  @Column({ length: 11 })
+  @Column()
   telefono: string;
-
-  @Column({ length: 13, nullable: true })
+  @Column()
   telefono_what: string;
-
-  @Column({ length: 250 })
+  @Column()
   email: string;
+  @Column({ default: 1 })
+  estatus: number;
 
-  @Column({ type: 'smallint' })
-  id_pago: number;
-
-  @Column({ length: 1 })
-  estatus: string;
-
-  @Column({ type: 'smallint' })
-  id_dia: number;
+  @Column()
+  hora_apertura: Date;
+  @Column()
+  hora_cierre: Date;
 }

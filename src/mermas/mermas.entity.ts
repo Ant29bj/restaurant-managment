@@ -1,12 +1,21 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Productos } from 'src/producto/producto.entity';
+import { TipoMermas } from 'src/tipo_mermas/tipo_mermas.entity';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 @Entity('mermas')
 export class Mermas extends GenericEntity {
-  // Falta relacionar
-  @PrimaryColumn()
+  @ManyToOne(() => Productos, (productos) => productos.id, {})
+  @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
+  prodcuto: Productos;
+  @Column()
   id_producto: number;
 
-  // Falta relacionar
+  @ManyToOne(() => TipoMermas, (tmermas) => tmermas.id, {})
+  @JoinColumn({ name: 'id_tipmerma', referencedColumnName: 'id' })
+  tmermas: TipoMermas;
+  @Column()
+  id_tipmerma: number;
+
   @Column()
   descripcion: string;
 
