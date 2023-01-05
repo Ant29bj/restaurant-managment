@@ -2,15 +2,25 @@ import { Estados } from 'src/estados/estados.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Localidades } from 'src/localidades/localidades.entity';
 import { Municipios } from 'src/municipio/municipios.entity';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from 'typeorm';
 
 @Entity({ name: 'sucursales' })
 export class Sucursales extends GenericEntity {
+  @OneToMany(() => Sucursales, (sucursales) => sucursales.id)
+  sucursal: Sucursales[];
+
   @ManyToOne((type) => Estados, (estados) => estados.id, {})
   @JoinColumn({ name: 'ID_Estado', referencedColumnName: 'id' })
+  estados: Estados;
   @Column()
   ID_Estado: number;
-  estados: Estados;
   // Fk compuestas entendidas
   @ManyToOne(() => Municipios, {})
   @JoinColumn([

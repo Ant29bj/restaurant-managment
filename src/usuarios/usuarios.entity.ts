@@ -2,10 +2,13 @@ import { Empresas } from 'src/empresas/empresas.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Sucursales } from 'src/sucursales/sucursales.entity';
 import { TipoUsuario } from 'src/tipo_usuario/tipo_usuario.entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 @Entity('usuarios')
 export class Usuarios extends GenericEntity {
+  @OneToMany(() => Usuarios, (usuarios) => usuarios.id)
+  usuarios: Usuarios[];
+
   //falta relacionar
   @ManyToOne((type) => Empresas, (empresa) => empresa.id, {})
   @JoinColumn({ name: 'id_empresa', referencedColumnName: 'id' })

@@ -2,7 +2,7 @@ import { Estados } from 'src/estados/estados.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Localidades } from 'src/localidades/localidades.entity';
 import { Municipios } from 'src/municipio/municipios.entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 export enum EstatusEmpresa {
   ACTIVO = 'activo',
@@ -11,6 +11,9 @@ export enum EstatusEmpresa {
 }
 @Entity('empresas')
 export class Empresas extends GenericEntity {
+  @OneToMany(() => Empresas, (empresas) => empresas.id)
+  empresas: Empresas[];
+
   //Falta relacionar
   @ManyToOne((type) => Estados, (estados) => estados.id, {})
   @JoinColumn({ name: 'ID_Estado', referencedColumnName: 'id' })

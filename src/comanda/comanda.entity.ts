@@ -4,39 +4,39 @@ import { Sucursales } from 'src/sucursales/sucursales.entity';
 import { TipoPagos } from 'src/tipo_pagos/tipo_pagos.entity';
 import { Usuarios } from 'src/usuarios/usuarios.entity';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Mesas } from '../mesa/mesa.entity';
 
 @Entity({ name: 'comanda' })
 export class Comanda extends GenericEntity {
-  @Column({ type: 'bigint' })
-  id_comanda: number;
+  //QueryFailedError: there is no unique constraint matching given keys for referenced table "sucursales"
+  // @ManyToOne(() => Sucursales, (sucursales) => sucursales.id, {})
+  // @JoinColumn({ name: 'id_sucursal', referencedColumnName: 'id' })
+  // sucursal: Sucursales;
+  // @Column()
+  // id_sucursal: number;
 
-  /*
-
-  @ManyToOne((type) => Sucursales, (sucursales) => sucursales.id, {})
-  @JoinColumn([
-    { name: 'id_sucursal', referencedColumnName: 'id' },
-    { name: 'id_empresa', referencedColumnName: 'id_empresa' },
-  ])
-  sucursales: Sucursales;
-*/
+  @ManyToOne(() => Empresas, (empresas) => empresas.id, {})
+  @JoinColumn({ name: 'id_empresa', referencedColumnName: 'id' })
+  empresa: Empresas;
   @Column()
-  id_sucursal: number;
+  id_empresa: number;
 
-  @ManyToOne((type) => Usuarios, {})
+  @ManyToOne((type) => Usuarios, (usuarios) => usuarios.id, {})
   @JoinColumn([{ name: 'id_usuarios', referencedColumnName: 'id' }])
+  usuario: Usuarios;
   @Column()
   id_usuarios: number;
-  usuario: number;
 
-  /*
-  @ManyToOne((type) => TipoPagos, (pago) => pago.id, {})
+  @ManyToOne((type) => TipoPagos, (tiPagos) => tiPagos.id, {})
   @JoinColumn([{ name: 'id_pago', referencedColumnName: 'id' }])
-  pagos: TipoPagos;
-  */
+  tipo_pagos: TipoPagos;
   @Column()
   id_pago: number;
 
-  @Column({ type: 'bigint' })
+  @ManyToOne((type) => Mesas, (mesas) => mesas.id, {})
+  @JoinColumn([{ name: 'id_mesa', referencedColumnName: 'id' }])
+  mesas: Mesas;
+  @Column()
   id_mesa: number;
 
   @Column({ type: 'smallint' })
