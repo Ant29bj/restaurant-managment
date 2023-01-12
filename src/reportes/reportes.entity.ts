@@ -1,3 +1,4 @@
+import { AreaRestaurante } from 'src/area_restaurante/area_restaurante.entity';
 import { Comanda } from 'src/comanda/comanda.entity';
 import { Empresas } from 'src/empresas/empresas.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
@@ -33,6 +34,9 @@ export class Reportes extends GenericEntity {
   @Column({ type: 'date' })
   fecha_fin: Date;
 
+  @ManyToOne(() => AreaRestaurante, (area_restaurante) => area_restaurante.id)
+  @JoinColumn({ name: 'id_area', referencedColumnName: 'id' })
+  area: AreaRestaurante;
   @Column({ type: 'smallint' })
   id_area: number;
 }

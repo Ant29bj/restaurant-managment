@@ -3,8 +3,8 @@ import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity('area_restaurante')
 export class AreaRestaurante extends GenericEntity {
-  @Column({ type: 'smallint' })
-  id_area: number;
+  @OneToMany(() => AreaRestaurante, (area_restaurant) => area_restaurant.id)
+  id_area: AreaRestaurante;
 
   @OneToMany(() => AreaRestaurante, (area) => area.id_area)
   area: AreaRestaurante[];

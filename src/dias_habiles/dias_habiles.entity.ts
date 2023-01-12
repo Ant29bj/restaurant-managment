@@ -1,5 +1,5 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'dias_habiles' })
 export class DiasHabiles extends GenericEntity {

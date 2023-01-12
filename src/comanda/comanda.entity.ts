@@ -1,6 +1,5 @@
 import { Empresas } from 'src/empresas/empresas.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Sucursales } from 'src/sucursales/sucursales.entity';
 import { TipoPagos } from 'src/tipo_pagos/tipo_pagos.entity';
 import { Usuarios } from 'src/usuarios/usuarios.entity';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
@@ -8,13 +7,6 @@ import { Mesas } from '../mesa/mesa.entity';
 
 @Entity({ name: 'comanda' })
 export class Comanda extends GenericEntity {
-  //QueryFailedError: there is no unique constraint matching given keys for referenced table "sucursales"
-  // @ManyToOne(() => Sucursales, (sucursales) => sucursales.id, {})
-  // @JoinColumn({ name: 'id_sucursal', referencedColumnName: 'id' })
-  // sucursal: Sucursales;
-  // @Column()
-  // id_sucursal: number;
-
   @ManyToOne(() => Empresas, (empresas) => empresas.id, {})
   @JoinColumn({ name: 'id_empresa', referencedColumnName: 'id' })
   empresa: Empresas;

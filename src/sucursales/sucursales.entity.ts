@@ -1,7 +1,9 @@
+import { DiasHabiles } from 'src/dias_habiles/dias_habiles.entity';
 import { Estados } from 'src/estados/estados.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Localidades } from 'src/localidades/localidades.entity';
 import { Municipios } from 'src/municipio/municipios.entity';
+import { TipoPagos } from 'src/tipo_pagos/tipo_pagos.entity';
 import {
   Column,
   Entity,
@@ -46,8 +48,19 @@ export class Sucursales extends GenericEntity {
 
   @Column()
   nombre_sucursal: string;
+
+  @ManyToOne(() => TipoPagos, (tipo_pago) => tipo_pago.id)
+  @JoinColumn({ name: 'tipo_pago', referencedColumnName: 'id' })
+  pagos: TipoPagos;
   @Column()
   tipos_pagos: number;
+
+  @ManyToOne(() => DiasHabiles, (dias_habiles) => dias_habiles.id)
+  @JoinColumn({ name: 'id_dia', referencedColumnName: 'id' })
+  dias_habiles: DiasHabiles;
+  @Column()
+  id_dia: number;
+
   @Column()
   direccion: string;
   @Column()

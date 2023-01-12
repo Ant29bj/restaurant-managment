@@ -1,8 +1,11 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { RolDeFuncionalidades } from 'src/rol_de_funcionalidades/rol_de_funcionalidades.entity';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity({ name: 'funcionalidades' })
 export class Funcionalidades extends GenericEntity {
+  @ManyToOne(() => RolDeFuncionalidades, (rol_func) => rol_func.id)
+  @JoinColumn({ name: 'id_funcionalidad', referencedColumnName: 'id' })
   @Column({ type: 'bigint' })
   id_funcionalidad: number;
 

@@ -6,13 +6,10 @@ import { Mesas } from '../mesa/mesa.entity';
 @Entity({ name: 'reservaciones' })
 export class Reservaciones extends GenericEntity {
   @ManyToOne((type) => Cliente, (cliente) => cliente.id, {})
-  @JoinColumn({ name: 'id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
   cliente: Cliente;
   @Column({ type: 'bigint' })
   id_cliente: number;
-
-  @Column({ type: 'smallint' })
-  id_reservacion: number;
 
   @ManyToOne((type) => Mesas, (mesa) => mesa.id, {})
   @JoinColumn({ name: 'id_mesa', referencedColumnName: 'id' })
