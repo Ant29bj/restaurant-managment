@@ -2,22 +2,19 @@ import {
   Body,
   Controller,
   Delete,
-  HttpException,
-  HttpStatus,
   Param,
   ParseIntPipe,
   Patch,
   Post,
   Get,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { GenericController } from 'src/generics/generic.controller';
 import { EquivalenciasMedidasCreateDto } from './dto/equivalencias_medidas.dto';
-import { UnidadesCreateDto } from 'src/unidades/dto/unidades.dto';
 import { EquivalenciasMedidas } from './equivalencias_medidas.entity';
 import { EquivalenciasMedidasService } from './equivalencias_medidas.service';
 
-@Controller('equivalencias-medidas')
+@Controller('equivalencias_medidas')
 export class EquivalenciasMedidasController extends GenericController<
   EquivalenciasMedidas,
   EquivalenciasMedidasService

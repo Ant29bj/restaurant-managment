@@ -30,6 +30,20 @@ import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
 import { TipoMermasModule } from './tipo_mermas/tipo_mermas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { AgrupacionModule } from './agrupacion/agrupacion.module';
+import { SucursalesModule } from './sucursales/sucursales.module';
+import { RolDeFuncionalidadesModule } from './rol_de_funcionalidades/rol_de_funcionalidades.module';
+import { ReservacionesModule } from './reservaciones/reservaciones.module';
+import { ProveedoresService } from './proveedores/proveedores.service';
+import { FuncionalidadesModule } from './funcionalidades/funcionalidades.module';
+import { DiasHabilesModule } from './dias_habiles/dias_habiles.module';
+import { DetalleRecetaModule } from './detalle_receta/detalle_receta.module';
+import { ComedorModule } from './comedor/comedor.module';
+import { ComandaServiciosModule } from './comanda_servicios/comanda_servicios.module';
+import { ComandaProductos } from './comanda_productos/comanda_productos.entity';
+import { ComandaProductosModule } from './comanda_productos/comanda_productos.module';
+import { Comanda } from './comanda/comanda.entity';
+import { ComandaModule } from './comanda/comanda.module';
+import { CategoriaProductosModule } from './categoria_productos/categoria_productos.module';
 
 @Module({
   imports: [
@@ -72,6 +86,23 @@ import { AgrupacionModule } from './agrupacion/agrupacion.module';
     TipoMermasModule,
     UsuariosModule,
     AgrupacionModule,
+    SucursalesModule,
+    RolDeFuncionalidadesModule,
+    ReservacionesModule,
+    ProveedoresModule,
+    ProductoModule,
+    MesaModule,
+    FuncionalidadesModule,
+    EquivalenciasMedidasModule,
+    DiasHabilesModule,
+    DetalleRecetaModule,
+    ComedorModule,
+    ComandaServiciosModule,
+    ComandaProductosModule,
+    ComandaModule,
+    ComandaComboModule,
+    CategoriaProductosModule,
+    CategoriaMermaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

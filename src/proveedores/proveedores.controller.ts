@@ -5,7 +5,7 @@ import { ProveedoresCreateDTO } from './dto/proveedores.dto';
 import { Proveedores } from './proveedores.entity';
 import { ProveedoresService } from './proveedores.service';
 
-@Controller('Proveedores')
+@Controller('proveedores')
 @ApiTags('Proveedores')
 export class ProveedoresController extends GenericController<
   Proveedores,
@@ -21,11 +21,11 @@ export class ProveedoresController extends GenericController<
     return this.ProveedoresService.create(entity);
   }
 
-  @Put('id')
-  @Patch('id')
+  @Put(':id')
+  @Patch(':id')
   @ApiBearerAuth()
   @ApiBody({ type: ProveedoresCreateDTO, required: true })
-  async update(@Param('id') id: number, @Body() entity: Proveedores) {
+  async update(@Param(':id') id: number, @Body() entity: Proveedores) {
     return this.ProveedoresService.update(id, entity);
   }
 }

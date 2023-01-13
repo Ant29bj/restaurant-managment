@@ -6,9 +6,9 @@ import { ComandaCombo } from './comanda_combo.entity';
 import { ComandaCombosService } from './comanda_combo.service';
 import { ComandaCombosCreateDto } from './dto/comanda_combo.dto';
 
-@Controller('comandaCombos')
-@ApiTags('comandaCombos')
-export class comandaCombosController extends GenericController<
+@Controller('comanda_combo')
+@ApiTags('comanda_combos')
+export class ComandaCombosController extends GenericController<
   ComandaCombo,
   ComandaCombosService
 > {
