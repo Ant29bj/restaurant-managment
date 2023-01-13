@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Put,
 } from '@nestjs/common';
 import { ApiAcceptedResponse, ApiBody, ApiTags } from '@nestjs/swagger';
 import { GenericController } from 'src/generics/generic.controller';
@@ -45,6 +46,7 @@ export class ClienteController extends GenericController<
   }
 
   @Patch(':id')
+  @Put(':id')
   @ApiBody({ type: CreateClienteDto, required: true })
   async updateCliente(
     @Param('id', ParseIntPipe) id: number,

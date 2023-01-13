@@ -1,8 +1,18 @@
 import { GenericController } from 'src/generics/generic.controller';
 import { Reportes } from './reportes.entity';
 import { ReportesService } from './reportes.service';
-import { Controller } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { ReporteCreateDTO } from './dto/reportes.dto';
+import { Empresas } from 'src/empresas/empresas.entity';
 
 @Controller('reportes')
 @ApiTags('reportes')
@@ -12,5 +22,22 @@ export class ReportesController extends GenericController<
 > {
   constructor(private readonly reportesService: ReportesService) {
     super(reportesService);
+  }
+
+  @Post()
+  @ApiBearerAuth()
+  @ApiBody({ type: ReporteCreateDTO })
+  async create(@Body() entity: Reportes) {
+    return this.reportesService.create(entity);
+  }
+
+  @Put(':id')
+  @Patch(':id')
+  @ApiBearerAuth()
+  async Update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() entity: Empresas,
+  ) {
+    return this.reportesService.update(id, entity);
   }
 }
