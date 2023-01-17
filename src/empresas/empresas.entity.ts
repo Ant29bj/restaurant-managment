@@ -1,7 +1,4 @@
-import { Estados } from 'src/estados/estados.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Localidades } from 'src/localidades/localidades.entity';
-import { Municipios } from 'src/municipio/municipios.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 export enum EstatusEmpresa {
@@ -13,34 +10,6 @@ export enum EstatusEmpresa {
 export class Empresas extends GenericEntity {
   @OneToMany(() => Empresas, (empresas) => empresas.id)
   empresas: Empresas[];
-
-  //Falta relacionar
-  @ManyToOne((type) => Estados, (estados) => estados.id, {})
-  @JoinColumn({ name: 'ID_Estado', referencedColumnName: 'id' })
-  @Column({ type: 'smallint' })
-  ID_Estado: number;
-  estados: Estados;
-
-  // Falta relacionar
-  @ManyToOne(() => Municipios, {})
-  @JoinColumn([
-    { name: 'ID_Estado', referencedColumnName: 'estado_id' },
-    { name: 'ID_Municipio', referencedColumnName: 'clave' },
-  ])
-  municipio: Municipios;
-  @Column({ type: 'smallint' })
-  ID_Municipio: number;
-
-  //Falta relacionar
-  @ManyToOne(() => Localidades, { eager: true })
-  @JoinColumn([
-    { name: 'ID_Estado', referencedColumnName: 'cve_ent' },
-    { name: 'ID_Municipio', referencedColumnName: 'cve_mun' },
-    { name: 'ID_Localidad', referencedColumnName: 'cve_loc' },
-  ])
-  localidades: Localidades;
-  @Column({ type: 'smallint' })
-  ID_Localidad: number;
 
   @Column()
   nombre_empresa: string;

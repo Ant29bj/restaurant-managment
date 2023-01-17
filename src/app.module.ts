@@ -33,17 +33,16 @@ import { AgrupacionModule } from './agrupacion/agrupacion.module';
 import { SucursalesModule } from './sucursales/sucursales.module';
 import { RolDeFuncionalidadesModule } from './rol_de_funcionalidades/rol_de_funcionalidades.module';
 import { ReservacionesModule } from './reservaciones/reservaciones.module';
-import { ProveedoresService } from './proveedores/proveedores.service';
 import { FuncionalidadesModule } from './funcionalidades/funcionalidades.module';
 import { DiasHabilesModule } from './dias_habiles/dias_habiles.module';
 import { DetalleRecetaModule } from './detalle_receta/detalle_receta.module';
 import { ComedorModule } from './comedor/comedor.module';
 import { ComandaServiciosModule } from './comanda_servicios/comanda_servicios.module';
-import { ComandaProductos } from './comanda_productos/comanda_productos.entity';
 import { ComandaProductosModule } from './comanda_productos/comanda_productos.module';
-import { Comanda } from './comanda/comanda.entity';
 import { ComandaModule } from './comanda/comanda.module';
 import { CategoriaProductosModule } from './categoria_productos/categoria_productos.module';
+import { EstadosModule } from './estados/estados.module';
+import { UbicacionModule } from './ubicacion/ubicacion.module';
 
 @Module({
   imports: [
@@ -103,6 +102,8 @@ import { CategoriaProductosModule } from './categoria_productos/categoria_produc
     ComandaComboModule,
     CategoriaProductosModule,
     CategoriaMermaModule,
+    EstadosModule,
+    UbicacionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
