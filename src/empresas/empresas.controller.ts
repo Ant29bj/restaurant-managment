@@ -28,14 +28,14 @@ export class EmpresasController extends GenericController<
     return this.empresasService.create(entity);
   }
 
-  @Put(':id')
   @Patch(':id')
+  @Put(':id')
   @ApiBearerAuth()
   @ApiBody({ type: EmpresaUpdateDto, required: true })
   async Update(
     @Param('id', ParseIntPipe) id: number,
     @Body() entity: Empresas,
   ) {
-    return this.empresasService.create(entity);
+    return this.empresasService.update(id, entity);
   }
 }

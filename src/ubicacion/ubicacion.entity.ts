@@ -1,5 +1,5 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('ubicacion')
 export class Ubicacion extends GenericEntity {
@@ -21,7 +21,7 @@ export class Ubicacion extends GenericEntity {
   @Column()
   zona: string;
 
-  @Column()
+  @PrimaryColumn()
   cp: string;
 
   @Column()
