@@ -12,4 +12,12 @@ export class UbicacionService extends GenericService<Ubicacion> {
   ) {
     super(ubicacionRepo);
   }
+
+  listRepo(pagina: number) {
+    const data = this.ubicacionRepo.find({
+      skip: pagina,
+      take: 10,
+    });
+    return data;
+  }
 }

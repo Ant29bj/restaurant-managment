@@ -24,6 +24,7 @@ export class CombosController extends GenericController<Combos, CombosService> {
   @ApiAcceptedResponse({ description: 'Combo agregado exitosamente' })
   @ApiBody({ type: CreateComboDto, required: true })
   async createCombo(@Body() entity: Combos) {
+    console.log('entro');
     return this.CombosService.create(entity);
   }
   @Delete(':id')
