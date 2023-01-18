@@ -4,12 +4,14 @@ import { GenericEntity } from 'src/generics/generic.entity';
 import { Localidades } from 'src/localidades/localidades.entity';
 import { Municipios } from 'src/municipio/municipios.entity';
 import { TipoPagos } from 'src/tipo_pagos/tipo_pagos.entity';
+import { Ubicacion } from 'src/ubicacion/ubicacion.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryColumn,
 } from 'typeorm';
 
@@ -18,30 +20,14 @@ export class Sucursales extends GenericEntity {
   @OneToMany(() => Sucursales, (sucursales) => sucursales.id)
   sucursal: Sucursales[];
 
-  @ManyToOne((type) => Estados, (estados) => estados.id, {})
-  @JoinColumn({ name: 'ID_Estado', referencedColumnName: 'id' })
-  estados: Estados;
-  @Column()
-  ID_Estado: number;
-  // Fk compuestas entendidas
-  @ManyToOne(() => Municipios, {})
+  @OneToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
   @JoinColumn([
-    { name: 'ID_Estado', referencedColumnName: 'estado_id' },
-    { name: 'ID_Municipio', referencedColumnName: 'clave' },
+    { name: 'id_ubicacion', referencedColumnName: 'id' },
+    { name: 'codigo_pos', referencedColumnName: 'cp' },
   ])
-  municipios: Municipios;
-  @Column()
-  ID_Municipio: number;
-
-  @ManyToOne(() => Localidades, { eager: true })
-  @JoinColumn([
-    { name: 'ID_Estado', referencedColumnName: 'cve_ent' },
-    { name: 'ID_Municipio', referencedColumnName: 'cve_mun' },
-    { name: 'ID_Localidad', referencedColumnName: 'cve_loc' },
-  ])
-  localidades: Localidades;
-  @Column()
-  ID_Localidad: number;
+  ubicacion: Ubicacion;
+  @Column({ length: 6 })
+  codigo_pos: string;
 
   @PrimaryColumn()
   id_empresa: number;

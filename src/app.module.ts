@@ -50,8 +50,8 @@ import { UbicacionModule } from './ubicacion/ubicacion.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      database: 'root',
-      username: 'root',
+      database: 'restaurant',
+      username: 'postgres',
       password: 'root',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
 
@@ -108,4 +108,4 @@ import { UbicacionModule } from './ubicacion/ubicacion.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
