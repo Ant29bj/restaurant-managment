@@ -43,19 +43,17 @@ import { ComandaModule } from './comanda/comanda.module';
 import { CategoriaProductosModule } from './categoria_productos/categoria_productos.module';
 import { EstadosModule } from './estados/estados.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
+import { SetupModule } from './setup/setup.module';
+import { SetupService } from './setup/setup.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      database: 'restaurant',
-      username: 'postgres',
-      password: 'root',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-
-      synchronize: true,
+    SetupModule,
+    TypeOrmModule.forRootAsync({
+      imports: [SetupModule],
+      useFactory: (setupService: SetupService) =>
+        setupService.getTypeOrmConfig(),
+      inject: [SetupService],
     }),
     CombosModule,
     ServiciosModule,
@@ -108,4 +106,4 @@ import { UbicacionModule } from './ubicacion/ubicacion.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
