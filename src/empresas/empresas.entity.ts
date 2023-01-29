@@ -1,6 +1,15 @@
+import { AdminEmpresa } from 'src/admin_empresa/admin_empresa.entity';
 import { GenericEntity } from 'src/generics/generic.entity';
 import { Ubicacion } from 'src/ubicacion/ubicacion.entity';
-import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+} from 'typeorm';
 
 export enum EstatusEmpresa {
   ACTIVO = 'activo',
@@ -9,6 +18,10 @@ export enum EstatusEmpresa {
 }
 @Entity('empresas')
 export class Empresas extends GenericEntity {
+  @ManyToMany(() => AdminEmpresa, (admin) => admin.empresas)
+  @JoinTable()
+  administrador: AdminEmpresa[];
+
   @OneToMany(() => Empresas, (empresas) => empresas.id)
   empresas: Empresas[];
 
