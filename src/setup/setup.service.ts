@@ -1,24 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import * as yaml from 'yamljs';
 
 @Injectable()
-export class SetupService {
-  private readonly config;
-
+export class SetupService implements TypeOrmOptionsFactory {
+  private readonly file;
   constructor() {
-    this.config = yaml.load('config.yml');
+    this.file = yaml.load('config.yml');
   }
-
-  getTypeOrmConfig(): any {
+  createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
-      type: this.config.db.type,
-      host: this.config.db.host,
-      port: this.config.db.port,
-      username: this.config.db.username,
-      password: this.config.db.password,
-      database: this.config.db.database,
-      entities: this.config.db.entities,
-      synchronize: this.config.db.synchronize,
+      type: this.file.db.type,
+      host: this.file.db.host,
+      port: this.file.db.port,
+      database: this.file.db.database,
+      username: this.file.db.username,
+      password: this.file.db.password,
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      synchronize: this.file.db.synchronize,
     };
   }
 }

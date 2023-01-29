@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Inject, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -45,15 +45,13 @@ import { EstadosModule } from './estados/estados.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
 import { SetupModule } from './setup/setup.module';
 import { SetupService } from './setup/setup.service';
+import { AdminEmpresaModule } from './admin_empresa/admin_empresa.module';
 
 @Module({
   imports: [
     SetupModule,
     TypeOrmModule.forRootAsync({
-      imports: [SetupModule],
-      useFactory: (setupService: SetupService) =>
-        setupService.getTypeOrmConfig(),
-      inject: [SetupService],
+      useClass: SetupService,
     }),
     CombosModule,
     ServiciosModule,
@@ -102,6 +100,7 @@ import { SetupService } from './setup/setup.service';
     CategoriaMermaModule,
     EstadosModule,
     UbicacionModule,
+    AdminEmpresaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
