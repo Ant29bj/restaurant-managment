@@ -3,19 +3,19 @@ import {
   FindManyOptions,
   FindOneOptions,
   InsertResult,
-} from 'typeorm';
+} from "typeorm";
 import {
   QueryDeepPartialEntity,
   QueryPartialEntity,
-} from 'typeorm/query-builder/QueryPartialEntity';
-import { Repository } from 'typeorm';
-import { GenericEntity } from './generic.entity';
+} from "typeorm/query-builder/QueryPartialEntity";
+import { Repository } from "typeorm";
+import { GenericEntity } from "./generic.entity";
 
 export abstract class GenericService<Entity extends GenericEntity> {
   constructor(private readonly repository: Repository<Entity>) {}
 
   create(
-    entity: QueryPartialEntity<Entity> | QueryPartialEntity<Entity>[] | Entity,
+    entity: QueryPartialEntity<Entity> | QueryPartialEntity<Entity>[] | Entity
   ): Promise<InsertResult> {
     return this.repository.insert(entity as QueryDeepPartialEntity<Entity>);
   }

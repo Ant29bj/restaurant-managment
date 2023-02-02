@@ -1,9 +1,9 @@
-import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity } from 'typeorm';
+import { GenericEntity } from "src/generics/generic.entity";
+import { Column, Entity } from "typeorm";
 
-@Entity({ name: 'dias_habiles' })
+@Entity({ name: "dias_habiles" })
 export class DiasHabiles extends GenericEntity {
-  @Column({ type: 'smallint' })
+  @Column({ type: "smallint" })
   id_dia: number;
 
   @Column({ length: 50 })

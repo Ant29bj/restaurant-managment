@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { RepresentanteLegalService } from './representante_legal.service';
+import { Module } from "@nestjs/common";
+import { RepresentanteLegalService } from "./representante_legal.service";
 
 @Module({
-  providers: [RepresentanteLegalService]
+  providers: [RepresentanteLegalService],
 })
 export class RepresentanteLegalModule {}

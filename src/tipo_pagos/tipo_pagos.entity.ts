@@ -1,7 +1,7 @@
-import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, OneToMany } from 'typeorm';
+import { GenericEntity } from "src/generics/generic.entity";
+import { Column, Entity, OneToMany } from "typeorm";
 
-@Entity({ name: 'tipo_pagos' })
+@Entity({ name: "tipo_pagos" })
 export class TipoPagos extends GenericEntity {
   @OneToMany(() => TipoPagos, (tiPagos) => tiPagos)
   tipo_pagos: TipoPagos[];

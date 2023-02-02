@@ -1,6 +1,7 @@
-import { AdminEmpresa } from 'src/admin_empresa/admin_empresa.entity';
-import { GenericEntity } from 'src/generics/generic.entity';
-import { Ubicacion } from 'src/ubicacion/ubicacion.entity';
+import { AdminEmpresa } from "src/admin_empresa/admin_empresa.entity";
+import { GenericEntity } from "src/generics/generic.entity";
+import { RepresentanteLegal } from "src/representante_legal/representante_legal.entity";
+import { Ubicacion } from "src/ubicacion/ubicacion.entity";
 import {
   Column,
   Entity,
@@ -9,14 +10,14 @@ import {
   ManyToMany,
   OneToMany,
   OneToOne,
-} from 'typeorm';
+} from "typeorm";
 
 export enum EstatusEmpresa {
-  ACTIVO = 'activo',
-  INACTIVO = 'inactivo',
-  SUSPENDIDA = 'suspendida',
+  ACTIVO = "activo",
+  INACTIVO = "inactivo",
+  SUSPENDIDA = "suspendida",
 }
-@Entity('empresas')
+@Entity("empresas")
 export class Empresas extends GenericEntity {
   @ManyToMany(() => AdminEmpresa, (admin) => admin.empresas)
   @JoinTable()
@@ -24,6 +25,10 @@ export class Empresas extends GenericEntity {
 
   @OneToMany(() => Empresas, (empresas) => empresas.id)
   empresas: Empresas[];
+
+  @ManyToMany(() => RepresentanteLegal, (representante) => representante.id)
+  @JoinColumn({ name: "id_representante", referencedColumnName: "id" })
+  id_representante: RepresentanteLegal;
 
   @Column()
   nombre_empresa: string;
@@ -36,8 +41,8 @@ export class Empresas extends GenericEntity {
 
   @OneToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
   @JoinColumn([
-    { name: 'id_ubicacion', referencedColumnName: 'id' },
-    { name: 'codigo_pos', referencedColumnName: 'cp' },
+    { name: "id_ubicacion", referencedColumnName: "id" },
+    { name: "codigo_pos", referencedColumnName: "cp" },
   ])
   ubicacion: Ubicacion;
   @Column({ length: 6 })
@@ -64,7 +69,7 @@ export class Empresas extends GenericEntity {
   @Column({ length: 1, default: 1 })
   estatus: string;
 
-  @Column({ type: 'money' })
+  @Column({ type: "money" })
   iva: number;
   // Falta relacioanr
   @Column({ nullable: true })

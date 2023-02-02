@@ -1,10 +1,10 @@
-import { DiasHabiles } from 'src/dias_habiles/dias_habiles.entity';
-import { Estados } from 'src/estados/estados.entity';
-import { GenericEntity } from 'src/generics/generic.entity';
-import { Localidades } from 'src/localidades/localidades.entity';
-import { Municipios } from 'src/municipio/municipios.entity';
-import { TipoPagos } from 'src/tipo_pagos/tipo_pagos.entity';
-import { Ubicacion } from 'src/ubicacion/ubicacion.entity';
+import { DiasHabiles } from "src/dias_habiles/dias_habiles.entity";
+import { Estados } from "src/estados/estados.entity";
+import { GenericEntity } from "src/generics/generic.entity";
+import { Localidades } from "src/localidades/localidades.entity";
+import { Municipios } from "src/municipio/municipios.entity";
+import { TipoPagos } from "src/tipo_pagos/tipo_pagos.entity";
+import { Ubicacion } from "src/ubicacion/ubicacion.entity";
 import {
   Column,
   Entity,
@@ -13,17 +13,17 @@ import {
   OneToMany,
   OneToOne,
   PrimaryColumn,
-} from 'typeorm';
+} from "typeorm";
 
-@Entity({ name: 'sucursales' })
+@Entity({ name: "sucursales" })
 export class Sucursales extends GenericEntity {
   @OneToMany(() => Sucursales, (sucursales) => sucursales.id)
   sucursal: Sucursales[];
 
   @OneToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
   @JoinColumn([
-    { name: 'id_ubicacion', referencedColumnName: 'id' },
-    { name: 'codigo_pos', referencedColumnName: 'cp' },
+    { name: "id_ubicacion", referencedColumnName: "id" },
+    { name: "codigo_pos", referencedColumnName: "cp" },
   ])
   ubicacion: Ubicacion;
   @Column({ length: 6 })
@@ -36,13 +36,13 @@ export class Sucursales extends GenericEntity {
   nombre_sucursal: string;
 
   @ManyToOne(() => TipoPagos, (tipo_pago) => tipo_pago.id)
-  @JoinColumn({ name: 'tipo_pago', referencedColumnName: 'id' })
+  @JoinColumn({ name: "tipo_pago", referencedColumnName: "id" })
   pagos: TipoPagos;
   @Column()
   tipos_pagos: number;
 
   @ManyToOne(() => DiasHabiles, (dias_habiles) => dias_habiles.id)
-  @JoinColumn({ name: 'id_dia', referencedColumnName: 'id' })
+  @JoinColumn({ name: "id_dia", referencedColumnName: "id" })
   dias_habiles: DiasHabiles;
   @Column()
   id_dia: number;

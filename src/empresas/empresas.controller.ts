@@ -1,6 +1,6 @@
-import { GenericController } from 'src/generics/generic.controller';
-import { Empresas } from './empresas.entity';
-import { EmpresasService } from './empresas.service';
+import { GenericController } from "src/generics/generic.controller";
+import { Empresas } from "./empresas.entity";
+import { EmpresasService } from "./empresas.service";
 import {
   Body,
   Controller,
@@ -9,10 +9,10 @@ import {
   Patch,
   Post,
   Put,
-} from '@nestjs/common';
-import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
-import { EmpresaCreateDto, EmpresaUpdateDto } from './dto/empresas.dto';
-@Controller('empresas')
+} from "@nestjs/common";
+import { ApiBearerAuth, ApiBody } from "@nestjs/swagger";
+import { EmpresaCreateDto, EmpresaUpdateDto } from "./dto/empresas.dto";
+@Controller("empresas")
 export class EmpresasController extends GenericController<
   Empresas,
   EmpresasService
@@ -28,13 +28,13 @@ export class EmpresasController extends GenericController<
     return this.empresasService.create(entity);
   }
 
-  @Patch(':id')
-  @Put(':id')
+  @Patch(":id")
+  @Put(":id")
   @ApiBearerAuth()
   @ApiBody({ type: EmpresaUpdateDto, required: true })
   async Update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() entity: Empresas,
+    @Param("id", ParseIntPipe) id: number,
+    @Body() entity: Empresas
   ) {
     return this.empresasService.update(id, entity);
   }
