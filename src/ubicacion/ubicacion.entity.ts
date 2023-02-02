@@ -1,10 +1,13 @@
 import { GenericEntity } from 'src/generics/generic.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, PrimaryColumn, ManyToOne } from 'typeorm';
+import { Estados } from '../estados/estados.entity';
 
 @Entity('ubicacion')
 export class Ubicacion extends GenericEntity {
-  @Column()
-  id_estado: string;
+
+  @ManyToOne(() => Estados, (estados) => estados.id, {})
+  @JoinColumn({ name: 'id_estado', referencedColumnName: 'id' })
+  id_estado: Estados;
 
   @Column()
   estado: string;
