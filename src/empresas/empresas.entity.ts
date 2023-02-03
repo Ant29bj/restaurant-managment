@@ -1,6 +1,7 @@
 import { AdminEmpresa } from "src/admin_empresa/admin_empresa.entity";
 import { GenericEntity } from "src/generics/generic.entity";
 import { RepresentanteLegal } from "src/representante_legal/representante_legal.entity";
+import { Sucursales } from "src/sucursales/sucursales.entity";
 import { Ubicacion } from "src/ubicacion/ubicacion.entity";
 import {
   Column,
@@ -8,6 +9,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   OneToOne,
 } from "typeorm";
@@ -30,6 +32,9 @@ export class Empresas extends GenericEntity {
   @JoinColumn({ name: "id_representante", referencedColumnName: "id" })
   id_representante: RepresentanteLegal;
 
+  @OneToMany(() => Sucursales, (sucursales) => sucursales.id_empresa)
+  sucursales: Sucursales[];
+
   @Column()
   nombre_empresa: string;
 
@@ -47,6 +52,9 @@ export class Empresas extends GenericEntity {
   ubicacion: Ubicacion;
   @Column({ length: 6 })
   codigo_pos: string;
+
+  @ManyToOne(() => RepresentanteLegal, (representante) => representante.id)
+  representante: RepresentanteLegal;
 
   @Column({ length: 255 })
   email: string;
