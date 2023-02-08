@@ -1,5 +1,6 @@
 import { CategoriaProductos } from "src/categoria_productos/categoria_productos.entity";
 import { GenericEntity } from "src/generics/generic.entity";
+import { GrupoProducto } from "src/grupo_producto/grupo_producto.entity";
 import { Image } from "src/images/images.entity";
 import { Proveedores } from "src/proveedores/proveedores.entity";
 import { Recetas } from "src/recetas/recetas.entity";
@@ -35,6 +36,9 @@ export class Productos extends GenericEntity {
 
   @ManyToMany(() => Recetas, (recetas) => recetas.productos)
   recetas: Recetas[];
+
+  @ManyToOne(() => GrupoProducto, (gpo_producto) => gpo_producto.id)
+  grupo: GrupoProducto;
 
   @Column({ type: "bigint" }) // falta relacionar entitdad empresa
   id_empresa: number;

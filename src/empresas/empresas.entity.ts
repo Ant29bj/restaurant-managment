@@ -44,7 +44,7 @@ export class Empresas extends GenericEntity {
   @Column({ length: 500 })
   descripcion: string;
 
-  @OneToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
+  @ManyToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
   @JoinColumn([
     { name: "id_ubicacion", referencedColumnName: "id" },
     { name: "codigo_pos", referencedColumnName: "cp" },

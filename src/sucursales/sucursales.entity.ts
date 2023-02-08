@@ -1,10 +1,10 @@
 import { AreaRestaurante } from "src/area_restaurante/area_restaurante.entity";
+import { ColoniasDeServicio } from "src/colonias_servicio/colonias_service.entity";
+import { ColoniasServicioModule } from "src/colonias_servicio/colonias_servicio.module";
 import { DiasHabiles } from "src/dias_habiles/dias_habiles.entity";
 import { Empresas } from "src/empresas/empresas.entity";
-import { Estados } from "src/estados/estados.entity";
 import { GenericEntity } from "src/generics/generic.entity";
-import { Localidades } from "src/localidades/localidades.entity";
-import { Municipios } from "src/municipio/municipios.entity";
+import { Reservaciones } from "src/reservaciones/reservaciones.entity";
 import { TipoPagos } from "src/tipo_pagos/tipo_pagos.entity";
 import { Ubicacion } from "src/ubicacion/ubicacion.entity";
 import {
@@ -15,7 +15,6 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  OneToOne,
 } from "typeorm";
 
 @Entity({ name: "sucursales" })
@@ -23,7 +22,7 @@ export class Sucursales extends GenericEntity {
   @OneToMany(() => Sucursales, (sucursales) => sucursales.id)
   sucursal: Sucursales[];
 
-  @OneToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
+  @ManyToOne(() => Ubicacion, (ubicacion) => ubicacion.cp)
   @JoinColumn([
     { name: "id_ubicacion", referencedColumnName: "id" },
     { name: "codigo_pos", referencedColumnName: "cp" },
@@ -76,4 +75,13 @@ export class Sucursales extends GenericEntity {
 
   @Column()
   hora_cierre: Date;
+
+  @OneToMany(() => Reservaciones, (reservaciones) => reservaciones.sucursal)
+  reservaciones: Reservaciones[];
+
+  @Column()
+  area_servicio: string;
+
+  @ManyToMany(() => ColoniasDeServicio, (col_servi) => col_servi.sucursales)
+  colonias_servicio: ColoniasDeServicio[];
 }

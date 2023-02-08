@@ -47,6 +47,7 @@ import { SetupModule } from "./setup/setup.module";
 import { SetupService } from "./setup/setup.service";
 import { AdminEmpresaModule } from "./admin_empresa/admin_empresa.module";
 import { RepresentanteLegalModule } from "./representante_legal/representante_legal.module";
+import { ColoniasServicioModule } from './colonias_servicio/colonias_servicio.module';
 
 @Module({
   imports: [
@@ -103,6 +104,7 @@ import { RepresentanteLegalModule } from "./representante_legal/representante_le
     UbicacionModule,
     AdminEmpresaModule,
     RepresentanteLegalModule,
+    ColoniasServicioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
