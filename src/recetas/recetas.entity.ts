@@ -1,4 +1,5 @@
 import { GenericEntity } from "src/generics/generic.entity";
+import { Insumos } from "src/insumos/insumos.entity";
 import { Productos } from "src/producto/producto.entity";
 import {
   Column,
@@ -25,4 +26,7 @@ export class Recetas extends GenericEntity {
   @ManyToMany(() => Productos)
   @JoinTable()
   productos: Productos[];
+
+  @ManyToMany(() => Insumos, (insumos) => insumos.id)
+  insumos: Insumos[];
 }

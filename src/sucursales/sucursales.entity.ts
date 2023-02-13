@@ -1,6 +1,5 @@
 import { AreaRestaurante } from "src/area_restaurante/area_restaurante.entity";
 import { ColoniasDeServicio } from "src/colonias_servicio/colonias_service.entity";
-import { ColoniasServicioModule } from "src/colonias_servicio/colonias_servicio.module";
 import { DiasHabiles } from "src/dias_habiles/dias_habiles.entity";
 import { Empresas } from "src/empresas/empresas.entity";
 import { GenericEntity } from "src/generics/generic.entity";
