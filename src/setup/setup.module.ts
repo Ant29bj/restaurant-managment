@@ -4,6 +4,6 @@ import { SetupService } from "./setup.service";
 
 @Module({
   providers: [SetupService],
-  exports: [SetupService, EnviromentSettings],
+  exports: [SetupService]
 })
-export class SetupModule {}
+export class SetupModule { }
