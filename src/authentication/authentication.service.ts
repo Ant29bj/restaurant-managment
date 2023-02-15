@@ -3,5 +3,5 @@ import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(private readonly jwtService: JwtService) { }
 }

@@ -15,4 +15,4 @@ import { EnviromentSettings } from "src/setup/credentials.service";
   ],
   providers: [EnviromentSettings],
 })
-export class AuthenticationModule {}
+export class AuthenticationModule { }
