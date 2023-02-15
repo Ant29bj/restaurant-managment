@@ -1,4 +1,4 @@
-import { Inject, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -47,7 +47,8 @@ import { SetupModule } from "./setup/setup.module";
 import { SetupService } from "./setup/setup.service";
 import { AdminEmpresaModule } from "./admin_empresa/admin_empresa.module";
 import { RepresentanteLegalModule } from "./representante_legal/representante_legal.module";
-import { ColoniasServicioModule } from './colonias_servicio/colonias_servicio.module';
+import { ColoniasServicioModule } from "./colonias_servicio/colonias_servicio.module";
+import { AuthenticationModule } from "./authentication/authentication.module";
 
 @Module({
   imports: [
@@ -105,6 +106,7 @@ import { ColoniasServicioModule } from './colonias_servicio/colonias_servicio.mo
     AdminEmpresaModule,
     RepresentanteLegalModule,
     ColoniasServicioModule,
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
