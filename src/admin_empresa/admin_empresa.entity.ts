@@ -23,4 +23,12 @@ export class AdminEmpresa extends GenericEntity {
 
   @Column({ type: "varchar", length: 255, nullable: false })
   direccion: string;
+
+  @Column({ type: "varchar", length: 255, nullable: false })
+  username: string;
+
+  @Column({ type: "varchar", length: 16, nullable: false })
+  password: string;
+
+
 }

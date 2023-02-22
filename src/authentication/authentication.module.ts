@@ -3,16 +3,20 @@ import { JwtModule } from "@nestjs/jwt";
 
 import { PassportModule } from "@nestjs/passport";
 import { EnviromentSettings } from "src/setup/credentials.service";
+import { AdminEmpresaModule } from '../admin_empresa/admin_empresa.module';
+import { AuthenticationService } from './authentication.service';
+import { jwtConstants } from "./contants";
+import { LocalStrategy } from './local.strategy';
 
 @Module({
-  imports: [
-    PassportModule.register({ defaultStrategy: "jwt" }),
+  imports: [AdminEmpresaModule,
+    PassportModule,
     JwtModule.register({
-      signOptions: {
-        expiresIn: 36000,
-      },
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '60s' },
     }),
   ],
-  providers: [EnviromentSettings],
+  providers: [AuthenticationService, LocalStrategy],
+  exports: [AuthenticationService],
 })
 export class AuthenticationModule { }
