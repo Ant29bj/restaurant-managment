@@ -6,12 +6,15 @@ import {
   Param,
   ParseIntPipe,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { GenericController } from 'src/generics/generic.controller';
 import { TipoMesa } from './tipo_mesa.entity';
 import { TipoMesaService } from './tipo_mesa.service';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { UpdateTipoMesa } from './dto/update-tipo_mesa.dto';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('tipo_mesa')
 @ApiTags('Tipo_mesa')

@@ -1,9 +1,11 @@
-import { Body, Controller, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { mermasCreateDto } from 'src/mermas/dto/create_mermas.dto';
 import { Comanda } from './comanda.entity';
 import { ComandaService } from './comanda.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('comanda')
 export class ComandaController extends GenericController<

@@ -6,12 +6,15 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { recetasCreateDto } from './dto/recetas.dto';
 import { Recetas } from './recetas.entity';
 import { RecetasService } from './recetas.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('recetas')
 @ApiTags('recetas')

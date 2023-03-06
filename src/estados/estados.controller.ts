@@ -1,9 +1,12 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiBasicAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { EstadosCreateDto } from './dto/estados.dto';
 import { Estados } from './estados.entity';
 import { EstadosService } from './estados.service';
+
+@UseGuards(JwtAuthGuard)
 
 @Controller('estados')
 export class EstadosController extends GenericController<

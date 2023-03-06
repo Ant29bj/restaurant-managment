@@ -7,13 +7,16 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 
 import { InsumosCreateDto } from './dto/insumos.dto';
 import { Insumos } from './insumos.entity';
 import { InsumosService } from './insumos.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('insumos')
 @ApiTags('tipo-pagos')

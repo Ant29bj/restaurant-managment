@@ -6,12 +6,15 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { SucuralesCreateDto } from './dto/sucursales.dto';
 import { Sucursales } from './sucursales.entity';
 import { SucursalesService } from './sucursales.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('sucursales')
 export class SucursalesController extends GenericController<

@@ -1,9 +1,11 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { MesaCreateDto } from './dto/mesa.dto';
 import { Mesas } from './mesa.entity';
 import { MesasService } from './mesa.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('mesas')
 @ApiTags('mesas')

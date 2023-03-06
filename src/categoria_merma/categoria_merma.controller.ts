@@ -6,12 +6,15 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { GenericController } from 'src/generics/generic.controller';
 import { CategoriaMermaCreateDto } from './dto/categoria_merma.dto';
 import { CategoriaMerma } from './categoria_merma.entity';
 import { CategoriaMermaService } from './categoria_merma.service';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('categoria_merma')
 @ApiTags('categoria_merma')

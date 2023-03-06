@@ -1,9 +1,11 @@
-import { Body, Controller, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { ReservacionesCreateDto } from './dto/reservaciones.dto';
 import { Reservaciones } from './reservaciones.entity';
 import { ReservacionesService } from './reservaciones.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('reservaciones')
 export class ReservacionesController extends GenericController<

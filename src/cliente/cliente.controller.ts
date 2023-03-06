@@ -8,13 +8,16 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiAcceptedResponse, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { Cliente } from './cliente.entity';
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './dto/cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
+@UseGuards(JwtAuthGuard)
 
 @Controller('cliente')
 @ApiTags('Cliente')

@@ -6,12 +6,15 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { ServiciosCreateDto } from './dto/servicios.dto';
 import { Servicios } from './servicios.entity';
 import { ServiciosService } from './servicios.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('servicios')
 @ApiTags('servicios')

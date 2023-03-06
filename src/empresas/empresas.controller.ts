@@ -9,9 +9,13 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody } from "@nestjs/swagger";
 import { EmpresaCreateDto, EmpresaUpdateDto } from "./dto/empresas.dto";
+import { JwtAuthGuard } from "src/authentication/jwt-auth.guard";
+@UseGuards(JwtAuthGuard)
+
 @Controller("empresas")
 export class EmpresasController extends GenericController<
   Empresas,

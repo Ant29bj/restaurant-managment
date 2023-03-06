@@ -6,12 +6,15 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { GenericController } from 'src/generics/generic.controller';
 import { ComboDetalle } from './combo_detalle.entity';
 import { ComboDetalleService } from './combo_detalle.service';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { ComboDetalleCreateDto } from './dto/combo_detalle.dto';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('combo_detalle')
 @ApiTags('Combo_Detalle')

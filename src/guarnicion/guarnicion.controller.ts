@@ -6,6 +6,7 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 
@@ -13,6 +14,8 @@ import { GenericController } from 'src/generics/generic.controller';
 import { GuarnicionService } from './guarnicion.service';
 import { Guarnicion } from './guarnicion.entity';
 import { GuarnicionCreateDto } from './dto/guarnicion.dto';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('guarnicion')
 @ApiTags('guarnicion')

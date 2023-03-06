@@ -1,10 +1,12 @@
-import { Body, Controller, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 
 import { GenericController } from 'src/generics/generic.controller';
 import { ComandaCombo } from './comanda_combo.entity';
 import { ComandaCombosService } from './comanda_combo.service';
 import { ComandaCombosCreateDto } from './dto/comanda_combo.dto';
+@UseGuards(JwtAuthGuard)
 
 @Controller('comanda_combo')
 @ApiTags('comanda_combos')

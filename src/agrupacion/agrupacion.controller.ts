@@ -1,9 +1,12 @@
-import { Body, Controller, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { Agrupacion } from './agrupacion.entity';
 import { AgrupacionService } from './agrupacion.service';
 import { AgrupacionCreateDto } from './dto/agrupacion.dto';
+@UseGuards(JwtAuthGuard)
+
 @Controller('agrupacion')
 @ApiTags('agrupacion')
 export class AgrupacionController extends GenericController<

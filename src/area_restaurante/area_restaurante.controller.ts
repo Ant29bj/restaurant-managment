@@ -7,13 +7,16 @@ import {
   ParseIntPipe,
   HttpException,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { AreaRestaurante } from './area_restaurante.entity';
 import { AreaRestauranteService } from './area_restaurante.service';
 import { CreateAreaDto } from './dto/createArea.dto';
 import { UpdateAreaDto } from './dto/update-area.dto';
+@UseGuards(JwtAuthGuard)
 
 @Controller('area_restaurante')
 export class AreaRestauranteController extends GenericController<

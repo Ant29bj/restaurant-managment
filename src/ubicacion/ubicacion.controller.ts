@@ -1,8 +1,10 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { Ubicacion } from './ubicacion.entity';
 import { UbicacionService } from './ubicacion.service';
+@UseGuards(JwtAuthGuard)
 
 @Controller('ubicacion')
 export class UbicacionController extends GenericController<

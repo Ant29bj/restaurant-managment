@@ -6,6 +6,7 @@ import {
   Delete,
   ParseIntPipe,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { GenericController } from 'src/generics/generic.controller';
 import { ApiAcceptedResponse, ApiBody, ApiTags } from '@nestjs/swagger';
@@ -13,6 +14,8 @@ import { Combos } from './combos.entity';
 import { CombosService } from './combos.service';
 import { CreateComboDto } from './dto/create-combo.dto';
 import { UpdateComboDto } from './dto/update-combo.dto';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('combos')
 @ApiTags('Combos')

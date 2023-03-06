@@ -6,12 +6,15 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
 import { GenericController } from 'src/generics/generic.controller';
 import { Comedor } from './comedor.entity';
 import { ComedorService } from './comedor.service';
 import { ComedorCreateDto } from './dto/comedor.dto';
+@UseGuards(JwtAuthGuard)
 
 @Controller('comedor')
 export class ComedorController extends GenericController<

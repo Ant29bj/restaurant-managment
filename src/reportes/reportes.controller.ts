@@ -9,10 +9,13 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { ReporteCreateDTO } from './dto/reportes.dto';
 import { Empresas } from 'src/empresas/empresas.entity';
+import { JwtAuthGuard } from 'src/authentication/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 
 @Controller('reportes')
 @ApiTags('reportes')
