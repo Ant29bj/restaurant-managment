@@ -7,9 +7,12 @@ export class Image extends GenericEntity {
   @Column()
   path: string;
 
+  @Column()
+  fileName: string;
+
   @ManyToOne(() => Combos, (combos) => combos.imagen)
   combo: Combos;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   comboId: number;
 }

@@ -9,4 +9,5 @@ export class ImageService extends GenericService<Image> {
   constructor(@InjectRepository(Image) private imageRepo: Repository<Image>) {
     super(imageRepo);
   }
+
 }

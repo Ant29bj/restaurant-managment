@@ -1,16 +1,21 @@
 import { GenericController } from 'src/generics/generic.controller';
 import {
+  Body,
   Controller,
   Post,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { Image } from './images.entity';
 import { ImageService } from './images.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { renameImage, fileFilter } from './helpers/image.helper';
+import { HttpStatus, HttpException } from '@nestjs/common';
+import { CreateImageDto } from './dto/create-image.dto';
+import { of } from 'rxjs';
 
 
 @Controller('images')
@@ -20,29 +25,7 @@ export class ImageController extends GenericController<Image, ImageService> {
     super(imageService);
   }
 
-  // @Post(':id')
-  // @UseInterceptors(
-  //   FileInterceptor('image', {
-  //     storage: diskStorage({
-  //       destination: './uploads/images/',
-  //       filename: (req, file, cb) => {
-  //         cb(null, file.originalname); //default file name
-  //       },
-  //     }),
-  //   }),
-  // )
-  // uploadeImage(
-  //   @UploadedFile() image: Express.Multer.File,
-  //   @Param('id', ParseIntPipe) comboId: number,
-  // ) {
-  //   const newImage = new CreateImageDto();
-  //   newImage.comboId = comboId;
-  //   newImage.path = image.path;
-
-  //   return this.imageService.create(newImage);
-  // }
-
-  @Post('upload')
+  @Post()
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
       destination: './uploads/images',
@@ -50,9 +33,16 @@ export class ImageController extends GenericController<Image, ImageService> {
     }),
     fileFilter: fileFilter
   }))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
+  @ApiBody({ type: CreateImageDto, required: true })
+  uploadFile(@Body() entity: Image, @UploadedFile() file: Express.Multer.File) {
+    console.log(file.filename);
+    console.log(file.path);
+    console.log(entity);
+    entity.path = file.path;
+    entity.fileName = file.filename;
 
+    return this.imageService.create(entity);
+    // return of({ Path: file.path, fileName: file.filename });
   }
 
 }
