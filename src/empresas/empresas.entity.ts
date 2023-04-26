@@ -77,7 +77,7 @@ export class Empresas extends GenericEntity {
   @Column({ length: 1, default: 1 })
   estatus: string;
 
-  @Column({ type: "money" })
+  @Column("decimal", { precision: 2, scale: 2 })
   iva: number;
   // Falta relacioanr
   @Column({ nullable: true })

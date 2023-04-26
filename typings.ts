@@ -4331,8 +4331,8 @@ export type Schema = {
       'deleted': string;
       'updated': string;
       'path': string;
-      'comboId': number;
       'fileName': string;
+      'comboId': number;
     };
     nested: {
       'combo': Schema['combos']['plain'] & Schema['combos']['nested'];

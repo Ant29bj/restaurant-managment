@@ -46,7 +46,7 @@ export class Productos extends GenericEntity {
   @Column({ length: 100 })
   descripcion: string;
 
-  @Column({ type: "money" })
+  @Column("decimal", { precision: 7, scale: 2 })
   precio_prod: number;
 
   @Column({ type: "smallint" })

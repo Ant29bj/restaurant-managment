@@ -24,6 +24,6 @@ export class Guarnicion extends GenericEntity {
   @Column({ length: 100 })
   descripcion: string;
 
-  @Column({ type: 'money' })
+  @Column("decimal", { precision: 7, scale: 2 })
   total_guarnicion: number;
 }
