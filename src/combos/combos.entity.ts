@@ -7,7 +7,7 @@ export class Combos extends GenericEntity {
   @Column()
   nombre_combo: string;
 
-  @Column({ type: 'money' })
+  @Column("decimal", { precision: 7, scale: 2 })
   precio: number;
 
   @OneToMany(() => Image, (images) => images.comboId)

@@ -35,7 +35,7 @@ export class DetalleReceta extends GenericEntity {
   @Column({ type: 'smallint' })
   id_unidad: number;
 
-  @Column({ type: 'money' })
+  @Column("decimal", { precision: 7, scale: 2 })
   costo: number;
 
   @ManyToOne(() => Mermas, (mermas) => mermas.id)
